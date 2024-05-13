@@ -9,6 +9,7 @@
     "hyprland/workspaces",
     "sway/mode",
     "cpu",
+    "temperature",
     "custom/separator",
     "memory",
     "custom/separator",
@@ -27,10 +28,6 @@
     "custom/separator",
     "clock"
   ],
-  "custom/wmname": {
-    "format": "",
-    "tooltip": false
-  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -76,8 +73,7 @@
   "clock": {
     "interval": 1,
     "locale": "C",
-    "format": " {:%I:%M:%S %p}",
-    "format-alt": " {:%a, %b %d}"
+    "format": " {:%a, %b %d - %I:%M:%S %p}"
   },
   "cpu": {
     "format": "&#8239;{usage}%",
@@ -86,14 +82,15 @@
   },
   "memory": {
     "interval": 1,
-    "format": " {used:0.2f}GB",
-    "max-length": 10,
+    "format": " {used:0.2f}|{swapUsed} ({percentage}%|{swapPercentage}%)",
+    "max-length": 20,
     "tooltip": false,
     "warning": 70,
     "critical": 90
   },
   "temperature": {
     "thermal-zone": 2,
+    "interval": 1,
     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C {icon}",
@@ -106,7 +103,7 @@
   },
   "network": {
     "format-wifi": "&#8239;({signalStrength}%)",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+    "format-ethernet": "{ipaddr}/{cidr}",
     "format-linked": "&#8239;{ifname} (No IP)",
     "format-disconnected": "✈&#8239;Disconnected",
     "format-alt": "{ipaddr}",
